@@ -43,7 +43,7 @@ Do not worry about making the POST request to the database yet.
 
 ### Iteration 3
 
-Now that the functionality is there for adding a reservation, write some tests:
+Now that the functionality is there for adding a song to the queue, write some tests:
 * Write tests for the form component and another component (not App yet) covering what should be displayed on the page.
 * Write a unit test for the form component that checks that when data is put into the form, the value is reflected in that form input.
 * Write an integration test for App that tests the user flow for adding a new song.
