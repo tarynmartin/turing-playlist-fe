@@ -1,68 +1,65 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Turing Playlist - Music Management App
 
-## Available Scripts
+This application was built with `create-react-app`.
 
-In the project directory, you can run:
+### Set Up
 
-### `npm start`
+Clone down this repo.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+On GitHub, create a new, empty repository and name it something like 'turing-playlist-fe'.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+By the end of the assessment, update the current remote (origin) and point it at the new URL of the repository you just created on GitHub. You can read how to do this [here](https://help.github.com/en/articles/changing-a-remotes-url). Once you've updated the remote, you should be able to push up to that repo after you have at least one commit.
 
-### `npm test`
+Run `npm install` to install dependencies for the repo.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Run `npm start` to start up your React server.
 
-### `npm run build`
+### Expectations / Rules
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Build a React app that can keep track of a queue of music!
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+You will have 3 hours to build this application.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![turing-playlist-screenshot](./src/assets/example-app.png)
+**Note:** This is a basic example of the important pieces of the app. Yours DOES NOT need to look exactly like this.
 
-### `npm run eject`
+We do want to see good commit habits - atomic commits that log small, focused changesets. Don't worry about creating GitHub issues, though.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Iteration 0
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Pull down the [API repo](https://github.com/turingschool-examples/turing-playlist-api). Set up instructions are in that repository's README.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Do *not* nest this inside your front-end repository.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Iteration 1
 
-## Learn More
+Get all existing songs on page load and display them on the DOM.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Iteration 2
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Create a controlled form component to add a new song to the queue (look into the API documentation to see what pieces of information are expected, and what datatypes it wants each piece to be). As a user types into the input fields, the form component's state should change.  When the user clicks the `Add Song` button, the application should update the App's state.  The new song should display with all of the existing songs. 
 
-### Code Splitting
+Do not worry about making the POST request to the database yet.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Iteration 3
 
-### Analyzing the Bundle Size
+Now that the functionality is there for adding a reservation, write some tests:
+* Write tests for the form component and another component (not App yet) covering what should be displayed on the page.
+* Write a unit test for the form component that checks that when data is put into the form, the value is reflected in that form input.
+* Write an integration test for App that tests the user flow for adding a new song.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### Iteration 4 (extension)
 
-### Making a Progressive Web App
+When the user adds a song, the application should make a post request to the API. The new song should still exist upon reloading the page.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+**Keep any fetch calls you write in the App component for now**
 
-### Advanced Configuration
+(If you have time to refactor your fetch calls into a separate helper file, that is fine, but it is *NOT* a requirement for this application.)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### Iteration 5 (extension)
 
-### Deployment
+Delete the first song in the queue when the user clicks on the `Next Song` button.  The deletion should persist upon reloading the page.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+### Other Extensions
 
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* Now try mocking your API calls. Try writing out a few other integration tests including happy path and sad path testing.
