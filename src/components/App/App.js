@@ -1,21 +1,34 @@
 import React, { Component } from 'react';
 import './App.css';
 import Songs from '../Songs/Songs'
-import { getAllSongs } from '../helpers/apiCalls'
+import NewSongForm from '../NewSongForm/NewSongForm'
+import { getAllSongs, postNewSong } from '../helpers/apiCalls'
 import SongController from '../SongController/SongController';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      songQueue: []
+      songQueue: [],
+      addNew: false
     }
   }
 
   componentDidMount() {
+    this.getSongs();
+  }
+
+  getSongs() {
+
     getAllSongs()
       .then(songs => this.setState({songQueue: songs}))
       .catch(error => console.log('couldn\'t get songs'))
+  }
+
+  addNewSong = (newSong) => {
+    postNewSong(newSong)
+      .then(response => this.getSongs())
+      .catch(error => console.log('we couldn\'t add the song'))
   }
 
   render() {
@@ -28,6 +41,10 @@ class App extends Component {
           <main>
           <Songs
             songs={this.state.songQueue}
+          />
+          <SongController />
+          <NewSongForm
+            addNewSong={this.addNewSong}
           />
           </main>
         </div>
