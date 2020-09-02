@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import Songs from '../Songs/Songs'
+import { getAllSongs } from '../helpers/apiCalls'
 import SongController from '../SongController/SongController';
 
 class App extends Component {
@@ -10,6 +12,11 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    getAllSongs()
+      .then(songs => this.setState({songQueue: songs}))
+      .catch(error => console.log('couldn\'t get songs'))
+  }
 
   render() {
     return (
@@ -19,8 +26,11 @@ class App extends Component {
         </header>
         <div className="App-background">
           <main>
+          <Songs
+            songs={this.state.songQueue}
+          />
           </main>
-        </div> 
+        </div>
       </div>
     )
   }
