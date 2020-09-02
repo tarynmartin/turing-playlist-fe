@@ -19,7 +19,6 @@ class App extends Component {
   }
 
   getSongs() {
-
     getAllSongs()
       .then(songs => this.setState({songQueue: songs}))
       .catch(error => console.log('couldn\'t get songs'))
